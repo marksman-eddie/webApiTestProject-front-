@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>TestWebApi</title>
+</head>
+<body>
+    <div class="container">
+        
+        <form class="form-add-message">
+            <div class="send">
+                <div>
+                    <input type="button" id="btn-post" value="Получить">
+                </div>
+
+            </div>
+            <div class="control">
+                <input id="input-message" onkeyup="buttonActivate()" class="message-input" type="text" placeholder="...">
+            </div>
+            <div>
+                <input type="button" id="btn-add" value="Отправить" disabled>
+            </div>
+            </form>
+
+        
+        <div class="list-message" id="msg-list">
+
+            
+        </div>
+    </div>
+</body>
+<script src="./script/script.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</html>
