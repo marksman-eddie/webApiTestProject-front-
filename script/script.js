@@ -1,30 +1,9 @@
-let msgArray = [
-    { 
-        user : "Eddie",
-        text : "hello" ,
-        date : "01-01-2020"
-
-           
-    },
-    { 
-        user : "Alex",
-        text : "hello" ,
-        date : "01-01-2020"
-
-           
-    },
-    { 
-        user : "Antony",
-        text : "hello" ,
-        date : "01-01-2020"
-
-           
-    }
-];
+let msgArray = [];
 let listMessage = document.getElementById('msg-list');
 let btnAdd = document.getElementById('btn-add');
 let inputMessage = document.getElementById('input-message');
 let btnPost = document.getElementById('btn-post');
+let btnDelete = document.getElementById('delete-btn');
 function buttonActivate ()
 {
    var  text = $('#input-message').val();
@@ -42,13 +21,17 @@ function renderListMessage (){
         let message = msgArray[i];
         listMessage.innerHTML += `
         <div class="message">
-        <div class="user-name">${message.user}</div>
-        <div class="text-message">${message.text}</div>
-        <div class="date">${message.date}</div> 
+                <button type="button" class="btn btn-warning" id="delete-btn">Warning</button>
+                <div class="user-name">${message.user}</div>
+                <div class="text-message">${message.text}</div>
+                <div class="date">${message.date}</div> 
+                
+            
         </div>`
     }
 
 }
+
 
 
 renderListMessage();
@@ -64,6 +47,7 @@ btnPost.addEventListener('click', function(event) {
         for (let i = 0; i<obj.length;i++)
         {
             let message ={
+                id : obj[i].id,
                 text : obj[i].text,
                 date : obj[i].date
             };
@@ -100,3 +84,19 @@ btnAdd.addEventListener('click',function(event) {
         renderListMessage();
     }
 })
+
+btnDelete.addEventListener('click', function(event){
+    
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST","https://localhost:5001/messages/RemoveMessage",false);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify(message.id));
+    if (xhr.status === 200)
+    {
+        console.log('delete object');
+
+    }
+})
+
+
